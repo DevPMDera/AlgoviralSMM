@@ -29,6 +29,8 @@
     <input type="text" placeholder="Search for Service" id="searchInput">
   </form>
       
+      <button id="currencyToggle">Show USD</button>
+      
       <button id="themeToggle" class="material-symbols-outlined">dark_mode</button>
     </nav>
   </header>
@@ -79,8 +81,8 @@
     <input type="number" id="modal-quantity" placeholder="Enter quantity">
     <div class="min-max-label">Min: 100 - Max: 10,000,000</div>
 
-    <label>Charge (₦)</label>
-    <input type="text" id="modal-charge" readonly>
+    <label>Charge</label>
+    <input type="text" id="modal-charge" readonly> 
 
     <button id="confirmOrder">Confirm Order</button>
   </div>
@@ -98,6 +100,7 @@
     </div>
 
     <p id="payment-order-id"></p>
+    <p id="payment-charge"></p>
 
     <!-- TABS -->
     <div class="payment-tabs">
@@ -209,6 +212,10 @@
     
   </section>
   
+  
+  <a href="https://wa.me/2348143675326" class="whatsapp-float" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/128/5968/5968841.png" alt="WhatsApp">
+</a>
   
   
 
