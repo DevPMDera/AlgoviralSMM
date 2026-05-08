@@ -478,3 +478,49 @@ copyBtn.addEventListener("click", () => {
       notify("Failed to copy", "error");
     });
 });
+
+
+
+function setupCopy(buttonId, textId, successMessage) {
+  const button = document.getElementById(buttonId);
+
+  button?.addEventListener("click", () => {
+    const text = document.getElementById(textId).textContent;
+
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        notify(successMessage, "success");
+      })
+      .catch(() => {
+        notify("Failed to copy", "error");
+      });
+  });
+}
+
+// ETH
+setupCopy(
+  "copyEthBtn",
+  "ethAddress",
+  "ETH address copied!"
+);
+
+// BTC
+setupCopy(
+  "copyBtcBtn",
+  "btcAddress",
+  "BTC address copied!"
+);
+
+// SOL
+setupCopy(
+  "copySolBtn",
+  "solAddress",
+  "SOL address copied!"
+);
+
+// USDT BEP20
+setupCopy(
+  "copyBep20Btn",
+  "bep20Address",
+  "USDT (BEP20) copied!"
+);
