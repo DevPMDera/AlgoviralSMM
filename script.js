@@ -96,7 +96,7 @@ searchForm?.addEventListener('submit', (e) => {
       section.innerHTML = matches.map(service => `
         <div class="card">
           <h3>${service.name}</h3>
-          <p class="price">₦${service.price}</p>
+          <p class="price">${formatPrice(service.price)}</p>
           <p class="per-room-txt">(per 1000)</p>
           <p class="speed">${service.speed}</p>
           <button class="buy-btn"
@@ -165,23 +165,101 @@ const data = {
 
 
 // ----------- RENDER SERVICES -----------
+let currentCurrency = "NGN";
+
+// Example exchange rate
+// Update this occasionally
+const usdRate = 1400;
+
+function formatPrice(amount) {
+
+  if (currentCurrency === "USD") {
+    return "$" + (amount / usdRate).toFixed(2);
+  }
+
+  return "₦" + Number(amount).toLocaleString();
+}
+
+
 function renderServices() {
   document.querySelectorAll('.tab-content').forEach(section => {
+    
+    if (currentPrice > 0) {
+
+  descriptionField.value =
+    descriptionField.value.includes("service")
+      ? descriptionField.value
+      : "";
+
+  const qty = Number(quantityField.value);
+
+  if (qty > 0) {
+    const total = (qty / 1000) * currentPrice;
+    chargeField.value = formatPrice(total);
+  }
+}
+
     const id = section.id;
 
-    section.innerHTML = data[id].map(service => `
-      <div class="card">
-        <h3>${service.name}</h3>
-        <p class="price">₦${service.price}</p>
-        <p class="per-room-txt">(per 1000)</p>
-        <p class="speed">${service.speed}</p>
-        <button class="buy-btn" data-platform="${id}" data-name="${service.name}" data-price="${service.price}">
-          Buy Now
-        </button>
-      </div>
-    `).join('');
+    section.innerHTML = data[id].map(service => {
+
+      return `
+        <div class="card">
+          <h3>${service.name}</h3>
+          
+          <p class="price">${formatPrice(service.price)}</p>
+
+          <p class="per-room-txt">(per 1000)</p>
+
+          <p class="speed">${service.speed}</p>
+
+          <button
+            class="buy-btn"
+            data-platform="${id}"
+            data-name="${service.name}"
+            data-price="${service.price}">
+            Buy Now
+          </button>
+        </div>
+      `;
+    }).join('');
   });
 }
+
+
+//------------ Currency Toggle fn --------------
+const currencyToggle = document.getElementById("currencyToggle");
+
+currencyToggle?.addEventListener("click", () => {
+
+  currentCurrency =
+    currentCurrency === "NGN"
+      ? "USD"
+      : "NGN";
+
+  currencyToggle.textContent =
+    currentCurrency === "NGN"
+      ? "Show USD"
+      : "Show NGN";
+
+  renderServices();
+
+  // Update modal if open
+  if (currentPrice > 0) {
+
+    const serviceText = descriptionField.value.split(" service")[0];
+
+    descriptionField.value =
+      `${serviceText} service - ${formatPrice(currentPrice)} per 1000`;
+
+    const qty = Number(quantityField.value);
+
+    if (qty > 0) {
+      const total = (qty / 1000) * currentPrice;
+      chargeField.value = formatPrice(total);
+    }
+  }
+});
 
 
 // ----------- TAB SWITCHING -----------
@@ -208,7 +286,8 @@ document.addEventListener('click', (e) => {
     const service = e.target.dataset.name;
     const price = e.target.dataset.price;
 
-  notify(`${service} selected (${platform}) — ₦${price} per 1000`, "success");
+notify(
+  `${service} selected (${platform}) — ${formatPrice(price)} per 1000`, "success");
     
     // future:
     // window.location.href = `/checkout?platform=${platform}&service=${service}&price=${price}`;
@@ -289,7 +368,7 @@ document.addEventListener('click', (e) => {
     currentPrice = price;
 
     categoryField.value = platform;
-    descriptionField.value = `(${platform}) ${service} service - ₦${price} per 1000`;
+    descriptionField.value = `(${platform}) ${service} service - ${formatPrice(price)} per 1000`;
     quantityField.value = "";
     chargeField.value = "";
 
@@ -327,8 +406,8 @@ quantityField.addEventListener('input', () => {
     return;
   }
 
-  const total = (qty / 1000) * currentPrice;
-  chargeField.value = total.toLocaleString();
+const total = (qty / 1000) * currentPrice;
+chargeField.value = formatPrice(total);
 });
 
 
@@ -347,7 +426,8 @@ if (!urlPattern.test(linkField.value.trim())) {
     description: descriptionField.value,
     link: linkField.value,
     quantity: quantityField.value,
-    charge: chargeField.value
+    charge: chargeField.value,
+    currency: currentCurrency
   };
 
   currentOrderId = currentOrderData.orderId;
@@ -374,6 +454,9 @@ fetch("https://hook.eu1.make.com/cc7ua14hn8ya11ofj6o5nrnhffsclusm", {
 
   document.getElementById('payment-order-id').textContent =
     "Order ID: " + currentOrderId;
+  
+document.getElementById('payment-charge').textContent =
+  "Amount: " + currentOrderData.charge;
 
   startTimer();
 })
