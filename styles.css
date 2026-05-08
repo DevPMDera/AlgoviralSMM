@@ -376,7 +376,8 @@ body.dark-mode #themeToggle {
 
 .pay-content p {
   margin: 10px;
-  white-space: nowrap; 
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .pay-content.active {
@@ -400,8 +401,8 @@ body.dark-mode #themeToggle {
 
 .copy-btn {
   cursor: pointer;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 }
 
 img.copy-btn {
@@ -410,6 +411,17 @@ img.copy-btn {
 
 .copy-btn:hover {
   transform: scale(1.1);
+}
+
+#crypto span{
+  background-color: rgba(50, 50, 50, 0.08);
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+#crypto p{
+  margin-bottom: 15px;
 }
 
 #paidBtn{
@@ -503,6 +515,43 @@ section {
 .dark-mode .navbar {
   background: #000;
 }
+
+#currencyToggle {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #111827;
+  color: white;
+  font-size: 14px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  z-index: 9999;
+  transition: 0.3s ease;
+}
+
+.whatsapp-float img {
+  width: 28px;
+  height: 28px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+
 
 @media (max-width: 768px)
 /**@media (max-width: 400px)**/{
@@ -599,6 +648,10 @@ section {
   flex-direction: column;
   align-items: center;
 }
+  
+  .modal-content{
+    transform: scale(0.9);
+  }
 
 
 }
