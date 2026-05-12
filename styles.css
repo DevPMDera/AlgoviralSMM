@@ -403,6 +403,7 @@ body.dark-mode #themeToggle {
   cursor: pointer;
   width: 30px;
   height: 30px;
+  margin-left: auto;
 }
 
 img.copy-btn {
@@ -413,15 +414,54 @@ img.copy-btn {
   transform: scale(1.1);
 }
 
-#crypto span{
-  background-color: rgba(50, 50, 50, 0.08);
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 14px;
+.p-one span{
+  font-size: 8px;
 }
 
-#crypto p{
+.p-one{
   margin-bottom: 15px;
+  box-shadow: 1px 2px 4px rgba(50, 50, 50, 0.3);
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-items: start;
+}
+
+.li-show{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.crypto-logo{
+  width: 25px;
+  height: 25px;
+}
+
+.crypto-name{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#bank{
+  text-align: center;
+  box-shadow: 1px 2px 4px rgba(50, 50, 50, 0.2);
+  padding: 10px; 
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.opay-logo{
+  width: 80px;
+  
+}
+
+#accountNumber{
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #paidBtn{
@@ -516,14 +556,33 @@ section {
   background: #000;
 }
 
-#currencyToggle {
-  padding: 8px 14px;
+
+.currency-toggle {
+  font-size: 14px;
+  margin-right: 10px;
+  color: white;
+  background: #111827;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   border: none;
+  padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
-  background: #111827;
-  color: white;
-  font-size: 14px;
+}
+
+.currency-toggle .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.currency-toggle:hover .material-symbols-outlined {
+  transform: rotate(180deg);
+  transition: 0.4s ease;
+}
+
+.toggles{
+  display: flex;
+  align-items: center;
 }
 
 .whatsapp-float {
