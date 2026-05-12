@@ -237,10 +237,16 @@ currencyToggle?.addEventListener("click", () => {
       ? "USD"
       : "NGN";
 
-  currencyToggle.textContent =
-    currentCurrency === "NGN"
-      ? "Show USD"
-      : "Show NGN";
+ currencyToggle.innerHTML =
+  currentCurrency === "NGN"
+    ? `
+      <span class="material-symbols-outlined">autorenew</span>
+      USD
+    `
+    : `
+      <span class="material-symbols-outlined">autorenew</span>
+      NGN
+    `;
 
   renderServices();
 
