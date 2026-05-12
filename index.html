@@ -29,9 +29,11 @@
     <input type="text" placeholder="Search for Service" id="searchInput">
   </form>
       
-      <button id="currencyToggle">Show USD</button>
       
+      <div class="toggles">
+      <button id="currencyToggle" class="currency-toggle"><span class="material-symbols-outlined">Autorenew</span>USD</button>
       <button id="themeToggle" class="material-symbols-outlined">dark_mode</button>
+      </div>
     </nav>
   </header>
   
@@ -110,49 +112,49 @@
 
     <!-- BANK -->
     <div class="pay-content active" id="bank">
-      <p><strong>Bank:</strong> OPay</p>
-      <p><strong>Account Name:</strong> AlgoviralSMM(Nweke Chidera)</p>
-      <p><strong>Account Number:</strong><span id="accountNumber"> 6550428752</span> &nbsp<img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png" alt="copy" class="copy-btn" id="copyBtn"></p>
+      <p><img src="https://gstatic.opayweb.com/website-ng/img/opay-logo.684aa98.svg" alt="OPAY" class="opay-logo"></p>
+      <p>AlgoviralSMM(Nweke Chidera)</p>
+      <p><span id="accountNumber">6550428752</span> &nbsp<img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png" alt="copy" class="copy-btn" id="copyBtn"></p>
     </div>
 
     <!-- CRYPTO -->
     <div class="pay-content" id="crypto">
-     <p>
-  ETH:
-  <span id="ethAddress">0xc5A336019f518CF15c181093f6f9a0f0106A1fa0</span>
-  <img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png"
-       alt="copy"
-       class="copy-btn"
-       id="copyEthBtn">
-</p>
-
-<p>
-  BTC:
-  <span id="btcAddress">bc1qcm4snpuk7yxjk6jr5gwcjgawafpkp5q2yx48ka</span>
-  <img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png"
-       alt="copy"
-       class="copy-btn"
-       id="copyBtcBtn">
-</p>
-
-<p>
-  SOL:
-  <span id="solAddress">EZZo8Aq78byZwqJZSBSVG5L9Gw7UecYkYwpENJekiDkf</span>
-  <img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png"
-       alt="copy"
-       class="copy-btn"
-       id="copySolBtn">
-</p>
-
-<p>
-  USDT (BEP20):
-  <span id="bep20Address">0xc5A336019f518CF15c181093f6f9a0f0106A1fa0</span>
-  <img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png"
-       alt="copy"
-       class="copy-btn"
-       id="copyBep20Btn">
-</p>
+     <div class="p-one">
+       <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="ETH" class="crypto-logo">
+       <div class="li-show">
+        <div class="crypto-name">ETH</div>
+        <span id="ethAddress">0xc5A336019f518CF15c181093f6f9a0f0106A1fa0</span>
+       </div>
+       <img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png" alt="copy" class="copy-btn" id="copyEthBtn">
     </div>
+
+<div class="p-one">
+  <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.gif" alt="BTC" class="crypto-logo">
+   <div class="li-show">
+  <div class="crypto-name">BTC</div>
+  <span id="btcAddress">bc1qcm4snpuk7yxjk6jr5gwcjgawafpkp5q2yx48ka</span>
+    </div>
+  <img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png" alt="copy" class="copy-btn" id="copyBtcBtn">
+</div>
+
+<div class="p-one">
+  <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5426.gif" alt="SOL" class="crypto-logo">
+  <div class="li-show">
+  <div class="crypto-name">SOL</div>
+  <span id="solAddress">EZZo8Aq78byZwqJZSBSVG5L9Gw7UecYkYwpENJekiDkf</span>
+  </div>
+  <img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png" alt="copy" class="copy-btn" id="copySolBtn">
+</div>
+
+<div class="p-one">
+  <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" alt="USDT-BEP20" class="crypto-logo">
+  <div class="li-show">
+ <div class="crypto-name">USDT (BEP20)</div>
+  <span id="bep20Address">0xc5A336019f518CF15c181093f6f9a0f0106A1fa0</span>
+  </div>
+  <img src="https://cdn-icons-png.flaticon.com/128/1827/1827973.png" alt="copy" class="copy-btn" id="copyBep20Btn">
+</div>
+</div>
     
     <input type="email" id="modal-email" placeholder="Enter your email (for receipt)" required>
 
